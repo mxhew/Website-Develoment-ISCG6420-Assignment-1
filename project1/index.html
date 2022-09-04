@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <div id="header">
+        <button id="btnPrevious" onclick="previousPage()">Previous</button>
+        <button id="btnNext" onclick="nextPage()">Next</button>
+        <div id="progressBar">
+            <div id="step1Bar" class="stepBar">
+                <p id="step1Text" class="stepBarText" >Step 1 - Incomplete</p>
+            </div>
+            <div id="step2Bar" class="stepBar">
+                <p id="step2Text" class="stepBarText" >Step 2 - Incomplete</p>
+            </div>
+            <div id="step3Bar" class="stepBar">
+                <p id="step3Text" class="stepBarText">Step 3 - Incomplete</p>
+            </div>
+            <div id="step4Bar" class="stepBar">
+                <p id="step4Text" class="stepBarText">Final Step -Incomplete</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="orewaBody" onclick="window.open('https://orewabeach.co.nz/')">
+        <div id="orewaBeach1"><img src="Orewabeach1.jpg"></div>
+        <div id="orewaBeach2"><img src="Orewabeach2.jpeg"></div>
+        <div id="orewaLogo"><img src="DOB-Logo-White.png"></div>
+        <div id="mainText1"><strong>OREWA</strong></div>
+        <div id="mainText2"><p><strong>Wild - Scenic - Beauty</strong></p></div>
+        <div id="idText">Max Hewitt - 1548877</div>
+    </div>
+
+    <div id="toyotaBody">
+        <div id="tytAdvertisement" onclick="window.open('https://www.toyota.co.nz/')"></div>
+        <button id="replay" onclick="restartAnimation()">Replay</button>
+        <div id="screen1">
+            <img src="toyotasymbol.png">
+        </div>
+        <div id="screen2">
+            <img src="roadbackground.jpg">
+            <div id="sc2text1">Toyota</div>
+            <div id="sc2text2">Buy Now!</div>
+            
+        </div>
+        <div id="toyotaCar">
+            <img id="carBody" src="car.png">
+            <img id="reifen1" src="reifen.png">
+            <img id="reifen2" src="reifen.png">
+        </div>
+       
+        
+    </div>
+
+    <div id="bookingBody">
+
+        <div id="page1" class="page">
+            <p>First Name: 
+                <input type="text" id="txtFirstName" onchange="changeFirstName()">
+            </p>
+            <p>Last Name: 
+                <input type="text" id="txtLastName" onchange="changeLastName()">
+            </p>
+            <p>Booking Date: 
+                <input type="date" id="dteBooking" onchange="changeDateBooking()">
+            </p>
+            <p>Do you agree agree with the local native conservation initiative agreement?</p>
+            <p>
+                Yes:
+                <input type="radio" id="radioYes" onclick="radioYes()">
+                No:
+                <input type="radio" id="radioNo" onclick="radioNo()">
+            </p>
+        </div>
+
+        <div id="page2" class="page">
+            <p>Number of days staying: </p>
+            <input type="range" id="daysRange" value="1" min="1" max="30" oninput="changeDays()" onchange="changeDays()">
+            <label id="lblDays" for="daysRange">1</label>
+            <p>Lodge Location:
+                <select id="cbxLodge" oninput="changeLodge()">
+                    <option>Lodge 1</option>
+                    <option>Lodge 2</option>
+                    <option>Lodge 3</option>
+                    <option>Lodge 4</option>
+                </select>
+            </p>
+        </div>
+
+        <div id="page3" class="page">
+            <p> Towel Colour Preference: 
+                <input type="color" name="clrTowel" id="clrTowel" oninput="changeTowel()">
+            </p>
+            <label for="numAdult">Number of Adults: </label>
+            <input type="number" id="numAdult" name="quantity" value="1" min="1" max="5" oninput="changeAdult()">
+            <br>
+            <label for="numChildren">Number of Adults: </label>
+            <input type="number" id="numChildren" name="quantity" value="0" min="0" max="5" oninput="changeChildren()">
+        </div>
+
+        <div id="page4" class="page">
+            <label for="txtEmail">Email: </label>
+            <input type="email" id="txtEmail" onchange="changeEmail()">
+            <br>
+            <p>Equipment:</p>
+            <label for="eqpSurfboard">Surfboard: </label>
+            <input type="checkbox" id="eqpSurfboard">
+            <br>
+            <label for="eqpSwimmingGoggles">SwimmingGoggles: </label>
+            <input type="checkbox" id="eqpSwimmingGoggles">
+            <br>
+            <label for="eqpSnorkles">Snorkles: </label>
+            <input type="checkbox" id="eqpSnorkles">
+        </div>
+
+        <div id="page5" class="page">
+            <h1>Summary</h1>
+            <p id="s1">First Name: </p>
+            <p id="s2">Last Name: </p>
+            <p id="s3">Email: </p>
+            <p id="s4">Booked Date: </p>
+            <br>
+            <p id="s5">No. of Days Booked: </p>
+            <p id="s6">Lodge location: </p>
+            <br>
+            <p id="s7">Towel Colour: 
+                <input type="color" id="sTowel">
+            </p>
+            <P id="s8">No. of Adults Booked: </P>
+            <p id="s9">No. of Children Booked: </p>
+        </div>
+    </div>
+
+    <script>
+
+        let currentPage = document.getElementById("page1")
+        let pageCounter = 1;
+
+        const btnNext = document.getElementById("btnNext")
+        const btnPrevious = document.getElementById("btnPrevious")
+
+        const txtFirstName = document.getElementById("txtFirstName")
+        const txtLastName = document.getElementById("txtLastName")
+        const dteBooking = document.getElementById("dteBooking")
+
+        const daysRange = document.getElementById("daysRange")
+        const cbxLodge = document.getElementById("cbxLodge")
+
+        const clrTowel = document.getElementById("clrTowel")
+        const numAdult = document.getElementById("numAdult")
+        const numChildren = document.getElementById("numChildren")
+
+        const txtEmail = document.getElementById("txtEmail")
+        
+        window.onload = function() {
+            currentPage.style.display = "block"
+            txtFirstName.value = localStorage.getItem("firstname")
+            txtLastName.value = localStorage.getItem("lastname")
+            dteBooking.value = localStorage.getItem("date")
+
+            daysRange.value = localStorage.getItem("days")
+            document.getElementById("lblDays").innerHTML = daysRange.value
+            cbxLodge.value = localStorage.getItem("Lodge")
+
+            clrTowel.value = localStorage.getItem("towel")
+            numAdult.value = localStorage.getItem("adults")
+            numChildren.value = localStorage.getItem("children")
+
+            pageCounter = localStorage.getItem("pageN")
+            updatePage()
+        }
+        
+        function validate() {
+            let inputs = currentPage.getElementsByTagName("*")
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value == "") {
+                    return false
+                }
+            }
+            return true
+        }
+
+        function updatePage() {
+            localStorage.setItem("pageN", pageCounter)
+            currentPage.style.display = "none"
+            currentPage = document.getElementById("page" + pageCounter)
+            currentPage.style.display = "block"
+            localStorage.setItem("step" + pageCounter, "Doing")
+            updateButtons()
+            loadBars()
+            if (pageCounter == 5) {
+                document.getElementById("s1").innerHTML += localStorage.getItem("firstname")
+                document.getElementById("s2").innerHTML += localStorage.getItem("firstname")
+                document.getElementById("s3").innerHTML += localStorage.getItem("email")
+                document.getElementById("s4").innerHTML += localStorage.getItem("date")
+                document.getElementById("s5").innerHTML += localStorage.getItem("days")
+                document.getElementById("s6").innerHTML += localStorage.getItem("Lodge")
+                document.getElementById("sTowel").value += localStorage.getItem("towel")
+                document.getElementById("s8").innerHTML += localStorage.getItem("adults")
+                document.getElementById("s9").innerHTML += localStorage.getItem("children")
+            }
+        }
+
+        function nextPage() {
+            let validation = validate()
+            if (pageCounter < 5 && validation == true) {
+                localStorage.setItem("step" + pageCounter, "Complete")
+                pageCounter++
+                updatePage()
+            }
+            else {
+                alert("You need to fill in all the details")
+            }
+        }
+        
+        function previousPage() {
+            if (pageCounter > 1) {
+                localStorage.setItem("step" + pageCounter, "Incomplete")
+                pageCounter--
+                updatePage()
+            }
+        }
+        
+        function updateButtons() {
+            btnPrevious.style.display = "block"
+            btnNext.style.display = "block"
+            btnNext.innerHTML = "Next"
+
+            if (pageCounter == 1) {
+                btnPrevious.style.display = "none"
+            }
+            else if (pageCounter == 4) {
+                btnNext.innerHTML = "Submit"
+            }
+            else if (pageCounter == 5) {
+                btnNext.style.display = "none"
+            }
+        }
+
+        function updateProgress(Step) {
+            let stepBar = document.getElementById(Step + "Bar")
+            let stepText = document.getElementById(Step + "Text")
+            let text = Step.charAt(0).toUpperCase() + Step.slice(1)
+            switch (localStorage.getItem(Step)){
+                case "Incomplete":
+                    stepBar.style.backgroundColor = "#C2C2C2"
+                    stepText.innerHTML = text + " - Incomplete"
+                    break
+                case "Doing":
+                    stepBar.style.backgroundColor = "blue"
+                    stepText.innerHTML = text + " - Doing..."
+                    break
+                case "Complete":
+                    stepBar.style.backgroundColor = "green"
+                    stepText.innerHTML = text + " - Completed"
+            }
+        }
+
+        function loadBars(){
+            updateProgress("step1")
+            updateProgress("step2")
+            updateProgress("step3")
+            updateProgress("step4")
+        }
+
+        function radioYes() {
+            document.getElementById("radioNo").checked = false;
+        }
+
+        function radioNo() {
+            document.getElementById("radioYes").checked = false;
+        }
+
+        function changeFirstName() {
+            localStorage.setItem("firstname", txtFirstName.value)
+        }
+
+        function changeLastName() {
+            localStorage.setItem("lastname", txtLastName.value)
+        }
+
+        function changeDateBooking() {
+            localStorage.setItem("date", dteBooking.value)
+        }
+
+        function changeDays() {
+            document.getElementById("lblDays").innerHTML = daysRange.value
+            localStorage.setItem("days", daysRange.value)
+        }
+
+        function changeLodge() {
+            localStorage.setItem("Lodge", cbxLodge.value)
+        }
+
+        function changeTowel() {
+            localStorage.setItem("towel", clrTowel.value)
+        }
+
+        function changeAdult() {
+            localStorage.setItem("adults", numAdult.value)
+        }
+
+        function changeChildren() {
+            localStorage.setItem("children", numChildren.value)
+        }
+
+        function changeEmail() {
+            localStorage.setItem("email", txtEmail.value)
+        }
+
+        function restartAnimation() {
+
+            window.location.reload()
+            // let body = document.querySelector("#toyotaBody");
+
+            // let child = body.getElementsByTagName("*")
+            // debugger
+            // for (let i = 0; i < child.length; i++) {
+               
+            //         child.style.animationName = "none"
+            //         requestAnimationFrame(() => {
+            //             setTimeout(() => {
+            //             child.style.animationName = ""
+            //             }, 0);
+            //         });
+                
+            // }
+        }
+
+    </script>
+</body>
+</html>

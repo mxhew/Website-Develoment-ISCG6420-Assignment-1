@@ -1,0 +1,408 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#header {
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    top: 0;
+    background-color: whitesmoke;
+}
+
+#bookingBody{
+    position: absolute;
+    top: 10%;
+    left: 300px;
+    width: 80%;
+    height: 60%;
+    background-color: #2596be;
+}
+
+.page {
+    display: none;
+}
+
+#btnPrevious {
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    top: 23%;
+    left: 1%;
+}
+
+#btnNext {
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    top: 23%;
+    right: 1%;
+}
+
+#progressBar {
+    position: absolute;
+    width: 80%;
+    height: 90%;
+    top: 5%;
+    left: 10%;
+}
+
+.stepBar {
+    position: absolute;
+    background-color: #C2C2C2;
+    width: 23%;
+    height: 90%;
+}
+
+.stepBarText{
+    position: absolute;
+    right: 3%;
+    top: 10%;
+    color: white;
+}
+
+#step1Bar{
+    top: 5%;
+    left: 1%;
+}
+
+#step2Bar{
+    top: 5%;
+    left: 25%;
+}
+
+#step3Bar{
+    top: 5%;
+    left: 49%;
+}
+
+#step4Bar{
+    top: 5%;
+    left: 73%;
+}
+
+#orewaBody {
+    position: relative;
+    width: 500px;
+    height: 180px;
+    top: 755px;
+    background-color: white;
+    border: 0.5px;
+    border-style: solid;
+    border-color: black;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#mainText1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 70px;
+    transform: translate(-50%,-50%);
+    color: #2596be;
+    animation-name: orewaTextMove1;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+}
+
+#mainText2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 0px;
+    transform: translate(-50%,-50%);
+    color: white;
+    white-space: nowrap;
+    animation-name: orewaTextMove2;
+    animation-duration: 1s;
+    animation-delay: 3.1s;
+    animation-fill-mode: forwards;
+}
+
+#idText {
+    position: absolute;
+    top: 2px;
+    left: 195px;
+    font-size: 12px;
+    color: orangered;
+    animation-name: idTextanim;
+    animation-duration: 4s;
+}
+
+#orewaBeach1 {
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    z-index: 0;
+    animation-name: orewaBeachimgMove1;
+    animation-duration: 1s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+}
+
+#orewaBeach1 img {
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+}
+
+#orewaBeach2 {
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    animation-name: orewaBeachimgMove2;
+    animation-duration: 1s;
+    animation-delay: 3s;
+    animation-fill-mode: forwards;
+}
+
+#orewaBeach2 img {
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+}
+
+#orewaLogo {
+    position:absolute;
+    width: 23%;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%,-50%);
+    animation-name: orewaLogoMove;
+    animation-duration: 5s;
+}
+
+#orewaLogo img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes orewaTextMove1 {
+    0% {font-size: 0px;}
+    50% {font-size: 70px; color: #2596be;}
+    75% {color: white; opacity: 1;}
+    100% {opacity: 0;}
+}
+
+@keyframes orewaTextMove2 {
+    0% {color: white; font-size: 0px;}
+    100% {color: orangered; font-size: 30px; top: 15%;}
+}
+
+@keyframes orewaBeachimgMove1 {
+    0% {left: 500px; visibility:visible;}
+    100% {left: 0px; visibility:visible;}
+}
+
+@keyframes orewaBeachimgMove2 {
+    0% {top: 180px; visibility:visible;}
+    100% {top: 0px; visibility:visible;}
+}
+
+@keyframes idTextanim {
+    0% {color: #2596be;}
+    50% {color: #2596be;}
+    75% {color: white;}
+    100% {color: orangered;}
+}
+
+@keyframes orewaLogoMove {
+    0% {opacity: 0;}
+    80% {opacity: 0;}
+    100% {opacity: 1}
+}
+
+#toyotaBody {
+    position: relative;
+    width: 200px;
+    height: 450px;
+    background-color: white;
+    border: 0.5px;
+    border-style: solid;
+    border-color: black;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#screen1 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: -200px;
+    background: white;
+    animation-name: screen1Move;
+    animation-duration: 4s;
+    animation-delay: -2s;
+    z-index: 1;
+}
+
+#screen1 img{
+    position: absolute;
+    object-fit: contain;
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#screen2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation-name: screen2Move;
+    animation-duration: 4s;
+    animation-delay: -2s;
+}
+
+#screen2 img {
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+}
+
+#sc2text1 {
+    position: absolute;
+    font-size: 54px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    color: red;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    opacity: 0;
+    animation-name: sc2TextMove;
+    animation-duration: 1s;
+    animation-delay: 4s;
+    animation-fill-mode: forwards;
+}
+
+#sc2text2 {
+    position: absolute;
+    font-size: 40px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    color: red;
+    white-space: nowrap;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    opacity: 0;
+    animation-name: sc2TextMove;
+    animation-duration: 1s;
+    animation-delay: 4.5s;
+    animation-fill-mode: forwards;
+}
+
+#toyotaCar {
+    position: absolute;
+    transform: rotate(0deg);
+    width: 300px;
+    height: 100px;
+    top: 300px;
+    left: -300px;
+    animation-name: carMove;
+    animation-duration: 1s;
+    animation-delay: 3s;
+    animation-fill-mode: forwards;
+}
+
+#carBody {
+    object-fit: fill;
+    width: 100%;
+    transform: scale(-1, 1);
+}
+
+#reifen1 {
+    position: absolute;
+    object-fit: cover;
+    width: 14.5%;
+    top: 67%;
+    left: 14%;
+    animation-name: reifenMove;
+    animation-duration: 1s;
+    animation-delay: 3s;
+}
+
+#reifen2 {
+    position: absolute;
+    object-fit: cover;
+    width: 14.5%;
+    top: 67%;
+    left: 67%;
+    animation-name: reifenMove;
+    animation-duration: 1s;
+    animation-delay: 3s;
+}
+
+@keyframes screen1Move {
+    0% {left: -200px;}
+    25% {left: -200px;}
+    50% {left: 0px;}
+    75% {left: 0px;}
+    100% {left: -200px;}
+}
+
+@keyframes screen2Move {
+    0% {left: 0px;}
+    25% {left: 0px;;}
+    50% {left: 200px;}
+    75% {left: 200px;}
+    100% {left: 0px;}
+}
+
+@keyframes carMove {
+    0% {left: -300px;}
+    100% {left: -10px;}
+}
+
+@keyframes reifenMove {
+    0% {transform: rotate(0deg);}
+    10% {transform: rotate(-360deg);}
+    23% {transform: rotate(0deg);}
+    30% {transform: rotate(-360deg);}
+    50% {transform: rotate(0deg);}
+    60% {transform: rotate(-360deg);}
+    100% {transform: rotate(0deg);}
+}
+
+@keyframes sc2TextMove {
+    0% {left: 60%;}
+    100% {left: 50%; opacity: 1;}
+}
+
+#tytAdvertisement {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    animation-name: clickGone;
+    animation-duration: 1s;
+    animation-delay: 6s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes clickGone {
+    100% {display: none; z-index: 0;}
+}
+
+#replay {
+    position: absolute;
+    z-index: 2;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    visibility: hidden;
+    animation-name: replayButtonAni;
+    animation-duration: 1s;
+    animation-delay: 6s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes replayButtonAni {
+    100% {visibility: visible;}
+}
