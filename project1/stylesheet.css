@@ -11,13 +11,19 @@ body {
     background-color: whitesmoke;
 }
 
+#btnGitHub {
+    position: absolute;
+    top: 10%;
+    left: 25px;
+}
+
 #bookingBody{
     position: absolute;
     top: 10%;
     left: 300px;
     width: 80%;
     height: 60%;
-    background-color: #2596be;
+    background-color: whitesmoke;
 }
 
 .page {
