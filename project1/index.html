@@ -111,13 +111,13 @@
             <br>
             <p>Equipment:</p>
             <label for="eqpSurfboard">Surfboard: </label>
-            <input type="checkbox" id="eqpSurfboard">
+            <input type="checkbox" id="eqpSurfboard" onchange="changeSurfboard()">
             <br>
             <label for="eqpSwimmingGoggles">SwimmingGoggles: </label>
-            <input type="checkbox" id="eqpSwimmingGoggles">
+            <input type="checkbox" id="eqpSwimmingGoggles" onchange="changeSwimming()">
             <br>
             <label for="eqpSnorkles">Snorkles: </label>
-            <input type="checkbox" id="eqpSnorkles">
+            <input type="checkbox" id="eqpSnorkles" onchange="changeSnorkles()">
         </div>
 
         <div id="page5" class="page">
@@ -131,10 +131,13 @@
             <p id="s6">Lodge location: </p>
             <br>
             <p id="s7">Towel Colour: 
-                <input type="color" id="sTowel">
+                <input type="color" id="sTowel" disabled>
             </p>
             <P id="s8">No. of Adults Booked: </P>
             <p id="s9">No. of Children Booked: </p>
+            <br>
+            <p>Equipment: </p>
+            <p id="s10">NONE</p>
         </div>
     </div>
 
@@ -158,6 +161,9 @@
         const numChildren = document.getElementById("numChildren")
 
         const txtEmail = document.getElementById("txtEmail")
+        const chkSurfboard = document.getElementById("eqpSurfboard")
+        const chkSwimming = document.getElementById("eqpSwimmingGoggles")
+        const chkSnorkles = document.getElementById("eqpSnorkles")
         
         window.onload = function() {
             currentPage.style.display = "block"
@@ -172,6 +178,12 @@
             clrTowel.value = localStorage.getItem("towel")
             numAdult.value = localStorage.getItem("adults")
             numChildren.value = localStorage.getItem("children")
+
+            txtEmail.value = localStorage.getItem("email")
+            chkSurfboard.checked = ("true" === localStorage.getItem("surfboard"))
+            debugger
+            chkSwimming.checked = ("true" === localStorage.getItem("swimming"))
+            chkSnorkles.checked = ("true" === localStorage.getItem("snorkles"))
 
             pageCounter = localStorage.getItem("pageN")
             updatePage()
@@ -196,15 +208,25 @@
             updateButtons()
             loadBars()
             if (pageCounter == 5) {
-                document.getElementById("s1").innerHTML += localStorage.getItem("firstname")
-                document.getElementById("s2").innerHTML += localStorage.getItem("firstname")
-                document.getElementById("s3").innerHTML += localStorage.getItem("email")
-                document.getElementById("s4").innerHTML += localStorage.getItem("date")
-                document.getElementById("s5").innerHTML += localStorage.getItem("days")
-                document.getElementById("s6").innerHTML += localStorage.getItem("Lodge")
-                document.getElementById("sTowel").value += localStorage.getItem("towel")
-                document.getElementById("s8").innerHTML += localStorage.getItem("adults")
-                document.getElementById("s9").innerHTML += localStorage.getItem("children")
+                document.getElementById("s1").innerHTML = "First Name: " + localStorage.getItem("firstname")
+                document.getElementById("s2").innerHTML = "Last Name: " + localStorage.getItem("lastname")
+                document.getElementById("s3").innerHTML = "Email: " + localStorage.getItem("email")
+                document.getElementById("s4").innerHTML = "Booking Date: " + localStorage.getItem("date")
+                document.getElementById("s5").innerHTML = "Days Booked: " + localStorage.getItem("days")
+                document.getElementById("s6").innerHTML = "Lodge Number: " + localStorage.getItem("Lodge")
+                document.getElementById("sTowel").value = localStorage.getItem("towel")
+                document.getElementById("s8").innerHTML = "No. Adults Booked: " + localStorage.getItem("adults")
+                document.getElementById("s9").innerHTML = "No. Children Booked: " + localStorage.getItem("children")
+                
+                let equipmentLine = ""
+                if (chkSurfboard.checked)
+                    equipmentLine += "- Surfboard <br>"
+                if (chkSwimming.checked)
+                    equipmentLine += "- Swimming Goggled <br>"
+                if (chkSnorkles.checked)
+                    equipmentLine += "- Snorkles"
+                
+                document.getElementById("s10").innerHTML = equipmentLine
             }
         }
 
@@ -270,6 +292,22 @@
             updateProgress("step4")
         }
 
+        function restartAnimation() {
+
+            let body = document.querySelector("#toyotaBody");
+
+            let child = body.getElementsByTagName("*") // This is an array, all children of "toyotaBody" element
+
+            for (let i = 0; i < child.length; i++) { 
+                child[i].style.animationName = "none"
+                requestAnimationFrame(() => {
+                    setTimeout(() => {
+                    child[i].style.animationName = ""
+                    }, 0);
+                });
+            }
+        }
+
         function radioYes() {
             document.getElementById("radioNo").checked = false;
         }
@@ -315,23 +353,16 @@
             localStorage.setItem("email", txtEmail.value)
         }
 
-        function restartAnimation() {
+        function changeSurfboard() {
+            localStorage.setItem("surfboard", chkSurfboard.checked.toString())
+        }
 
-            window.location.reload()
-            // let body = document.querySelector("#toyotaBody");
+        function changeSwimming() {
+            localStorage.setItem("swimming", chkSwimming.checked.toString())
+        }
 
-            // let child = body.getElementsByTagName("*")
-            // debugger
-            // for (let i = 0; i < child.length; i++) {
-               
-            //         child.style.animationName = "none"
-            //         requestAnimationFrame(() => {
-            //             setTimeout(() => {
-            //             child.style.animationName = ""
-            //             }, 0);
-            //         });
-                
-            // }
+        function changeSnorkles() {
+            localStorage.setItem("snorkles", chkSnorkles.checked.toString())
         }
 
     </script>
