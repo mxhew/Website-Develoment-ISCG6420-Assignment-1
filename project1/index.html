@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Orewa Booking</title>
     <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
@@ -101,7 +101,7 @@
             <label for="numAdult">Number of Adults: </label>
             <input type="number" id="numAdult" name="quantity" value="1" min="1" max="5" oninput="changeAdult()">
             <br>
-            <label for="numChildren">Number of Adults: </label>
+            <label for="numChildren">Number of Children: </label>
             <input type="number" id="numChildren" name="quantity" value="0" min="0" max="5" oninput="changeChildren()">
         </div>
 
@@ -217,7 +217,7 @@
                 document.getElementById("sTowel").value = localStorage.getItem("towel")
                 document.getElementById("s8").innerHTML = "No. Adults Booked: " + localStorage.getItem("adults")
                 document.getElementById("s9").innerHTML = "No. Children Booked: " + localStorage.getItem("children")
-                
+
                 let equipmentLine = ""
                 if (chkSurfboard.checked)
                     equipmentLine += "- Surfboard <br>"
