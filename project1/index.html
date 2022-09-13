@@ -152,6 +152,8 @@
         const txtFirstName = document.getElementById("txtFirstName")
         const txtLastName = document.getElementById("txtLastName")
         const dteBooking = document.getElementById("dteBooking")
+        const radYes = document.getElementById("radioYes")
+        const radNo = document.getElementById("radioNo")
 
         const daysRange = document.getElementById("daysRange")
         const cbxLodge = document.getElementById("cbxLodge")
@@ -170,6 +172,8 @@
             txtFirstName.value = localStorage.getItem("firstname")
             txtLastName.value = localStorage.getItem("lastname")
             dteBooking.value = localStorage.getItem("date")
+            radYes.checked = ("true" === localStorage.getItem("radio"))
+            radNo.checked = ("false" === localStorage.getItem("radio"))
 
             daysRange.value = localStorage.getItem("days")
             document.getElementById("lblDays").innerHTML = daysRange.value
@@ -181,7 +185,6 @@
 
             txtEmail.value = localStorage.getItem("email")
             chkSurfboard.checked = ("true" === localStorage.getItem("surfboard"))
-            debugger
             chkSwimming.checked = ("true" === localStorage.getItem("swimming"))
             chkSnorkles.checked = ("true" === localStorage.getItem("snorkles"))
 
@@ -310,10 +313,12 @@
 
         function radioYes() {
             document.getElementById("radioNo").checked = false;
+            localStorage.setItem("radio", "true")
         }
 
         function radioNo() {
             document.getElementById("radioYes").checked = false;
+            localStorage.setItem("radio", "false")
         }
 
         function changeFirstName() {
